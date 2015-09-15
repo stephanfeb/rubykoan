@@ -15,6 +15,21 @@
 #
 def triangle(a, b, c)
   # WRITE THIS CODE
+ 
+  raise TriangleError if a <= 0 || b <= 0 || c <= 0
+  raise TriangleError if a + b <= c || a + c <= b
+
+  return :equilateral  if a == b and b == c
+
+  return :isosceles if a != b and b == c
+
+  return :isosceles if a == c and a != b
+
+  return :isosceles if a == b and a != c
+
+  return :scalene if a != b and b != c and a != c
+
+  raise TriangleError
 end
 
 # Error class used in part 2.  No need to change this code.
