@@ -16,6 +16,20 @@ class Proxy
   def initialize(target_object)
     @object = target_object
     # ADD MORE CODE HERE
+    
+  end
+
+  def method_missing(method, *args, &block)
+    if method.match(/channel/)
+      return @object.channel(args[0])
+    end
+
+  end
+
+  def respond_to? (method_name)
+    if (method_name.match(/channel/))
+        return true
+    end
   end
 
   # WRITE CODE HERE
